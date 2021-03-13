@@ -7,16 +7,16 @@ const ErrorModal = (props) => {
         <Modal show={props.showModal} onHide={props.handleClose}>
         <Modal.Dialog>
             <Modal.Header closeButton>
-                <Modal.Title>Modal title</Modal.Title>
+                <Modal.Title>Market React</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-                <p>Modal body text goes here.</p>
+                <p>Sign up/log in to post or reply. </p>
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={props.handleClose} variant="secondary">Close</Button>
-                <Button variant="primary">Save changes</Button>
+                <Button onClick={props.handleClose} variant="secondary">Sign in</Button>
+                <Button variant="primary">Sign up</Button>
             </Modal.Footer>
         </Modal.Dialog>
         </Modal>
