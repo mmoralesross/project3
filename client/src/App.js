@@ -1,51 +1,23 @@
-import React, { Component, useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
-import Wrapper from "./components/Wrapper";
-import Card from "./components/Card";
-import Button from "./components/Button";
-import Alert from "./components/Alert";
-import ErrorModal from "./components/ErrorModal";
-
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Signup from "./pages/Signup";
 
 function App() {
-    const [showModal, setShowModal] = useState(false);
-
-    const handleClose = () => setShowModal(false);
-    const handleShow = () => setShowModal(true);
-
     return (
-
-        <Wrapper>
-            <Navbar />
-            <button onClick={handleShow}>Open Modal</button>
-            <ErrorModal showModal={showModal} handleClose={handleClose} />
-            <Card>
-                <Button color="info">Button 1</Button>
-                <Button color="warning">Button 2</Button>
-            </Card>
-            <Alert
-                color="danger"
-                titles="Welcome!"
-                text1="prolsu"
-                text2="have fun!"
-            />
-            <Alert
-                color="warning"
-                titles="Good bye"
-                text1="see you later"
-                text2="you logged out succesfully!"
-            />
-            <Alert
-                color="info"
-                titles="Good bye"
-                text1="see you later"
-                text2="you logged out succesfully!"
-            />
-
-        </Wrapper>
-
-    )
+        <Router>
+            <Home />
+            <div>
+                <Switch>
+                    <Route exact path={["/reactions"]} component={Home} />
+                    <Route exact path={"/signup"} component={Profile} />
+                    <Route exact path={"/profile/:id"} component={Signup} />
+                </Switch>
+            </div>
+        </Router>
+    );
 };
 
 export default App;
