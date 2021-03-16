@@ -11,32 +11,32 @@ mongoose.connect(
 const postsSeed = [
   {
     reaction: "Let's talk about the goverments stimulus",
-    user: "prolsu",
+    username: "prolsu",
     date: new Date(Date.now())
   },
   {
     reaction: "BUY GAMESTOP!",
-    user: "Unkownuser",
+    username: "Unkownusername",
     date: new Date(Date.now())
   },
   {
     reaction: "How do you feel about GOLD right now?",
-    user: "J.D. Salinger",
+    username: "J.D. Salinger",
     date: new Date(Date.now())
   },
   {
     reaction: "Market in the red! Sell, Sell, Sell!!!",
-    user: "Tal M. Klein",
+    username: "Tal M. Klein",
     date: new Date(Date.now())
   },
   {
     reaction: "Bought $100k of FB today",
-    user: "J.K. Rowling",
+    username: "J.K. Rowling",
     date: new Date(Date.now())
   },
   {
     reaction: "Everyone is using Robinhood now...",
-    user: "Neil Gaiman",
+    username: "Neil Gaiman",
     date: new Date(Date.now())
   }
 ];
