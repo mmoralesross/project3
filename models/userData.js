@@ -1,17 +1,17 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const passportLocalMongoose = require('passport-local-mongoose');
+const bcrypt = require("bcryptjs");
 
 const userDataSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        // unique: true
     },
     username: {
         type: String,
         required: true,
-        unique: true
+        // unique: true
     },
     password: {
         type: String,
@@ -24,6 +24,18 @@ const userDataSchema = new Schema({
         }
     ]
 });
+
+// userDataSchema.prototype.validPassword = function (password) {
+//     return bcrypt.compareSync(password, this.password);
+// };
+
+// userDataSchema.addHook("beforeCreate", user => {
+//     user.password = bcrypt.hashSync(
+//         user.password,
+//         bcrypt.genSaltSync(10),
+//         null
+//     );
+// });
 
 const UserData = mongoose.model("UserData", userDataSchema);
 

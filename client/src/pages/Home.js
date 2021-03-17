@@ -10,7 +10,6 @@ import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import ReplyModal from "../components/ReplyModal";
-import { Nav } from "react-bootstrap";
 
 function Home() {
     const [reactions, setReactions] = useState([]);
@@ -88,7 +87,7 @@ function Home() {
                 <Wrapper>
                     {reactions.map(reaction => (
                         <Card key={reaction._id} data-card-id={reaction._id} color="info">
-                            <p><strong>{reaction.username} posted:</strong></p>
+                            <p><strong>{reaction.username}:</strong></p>
                             <hr />
                             <p>{reaction.reaction}</p>
                             <ReplyModal 
@@ -97,9 +96,9 @@ function Home() {
                                 username={reaction.username}
                             />
                             <Button
-                                color="success"
+                                color="success btn-sm"
                                 onClick={handleShow}
-                                id={reaction._id}
+                                data-btn-id={reaction._id}
                                 name={reaction.username}
                             >
                                 Reply

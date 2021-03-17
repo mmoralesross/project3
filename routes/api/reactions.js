@@ -3,7 +3,9 @@ const reactionsController = require("../../controllers/reactionsController");
 
 //  matches with "/api/reactions"
 router.route("/")
-    .get(reactionsController.findAll)
+    .get(reactionsController.findAll);
+
+router.route("/")
     .post(reactionsController.create);
     
 // matches with "/api/reactions/:id"
