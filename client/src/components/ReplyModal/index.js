@@ -6,6 +6,7 @@ import Input from "../Input";
 
 function ReplyModal(props) {
 
+    console.log (props)
     return (
         <Modal show={props.showModal} onHide={props.handleClose}>
         <Modal.Dialog>

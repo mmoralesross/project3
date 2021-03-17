@@ -3,7 +3,7 @@ import API from "../utils/API";
 // import { Link } from "react-router-dom";
 
 import Jumbotron from "../components/Jumbotron";
-import Navbar from "../components/Navbar";
+import Appbar from "../components/Navbar/index";
 import Wrapper from "../components/Wrapper";
 import Card from "../components/Card";
 import Form from "../components/Form";
@@ -19,7 +19,7 @@ function Home() {
 
     useEffect(() => {
         loadReactions()
-    }, []);
+    }, [reactions]);
 
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
@@ -28,7 +28,7 @@ function Home() {
         API.getReactions()
             .then(res =>
                 setReactions(res.data)
-            )
+            ).then(() => console.log (reactions))
             .catch(err => console.log(err));
     };
 
@@ -60,7 +60,7 @@ function Home() {
 
     return (
         <Wrapper>
-            <Navbar />
+            <Appbar />
             <Jumbotron />
             <Form>
                 <Input
@@ -91,7 +91,8 @@ function Home() {
                             <p><strong>{reaction.username} posted:</strong></p>
                             <hr />
                             <p>{reaction.reaction}</p>
-                            <ReplyModal 
+                            <ReplyModal
+                                reaction={reaction} 
                                 showModal={showModal}
                                 handleClose={handleClose}
                                 username={reaction.username}
