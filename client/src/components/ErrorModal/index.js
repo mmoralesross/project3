@@ -11,7 +11,7 @@ const ErrorModal = (props) => {
             </Modal.Header>
 
             <Modal.Body>
-                <p>Sign up/log in to post or reply. </p>
+                <p>Sign up/log in to post or reply.</p>
             </Modal.Body>
 
             <Modal.Footer>
