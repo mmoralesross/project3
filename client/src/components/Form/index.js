@@ -1,10 +1,9 @@
 import React from "react";
 
-function Card(props) {
+function Form(props) {
     return (
         <React.Fragment>
-        <div className={"card alert-" + props.color} card-
-        id={props.id} key={props.id}>
+        <div className={"card form alert-" + props.color}>
             <div className="card-body">
                 {props.children}
             </div>
@@ -14,4 +13,4 @@ function Card(props) {
     );
 };
 
-export default Card;
+export default Form;
