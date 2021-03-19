@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import Jumbotron from "../components/Jumbotron";
 import Appbar from "../components/Navbar/index";
@@ -47,21 +47,25 @@ function Home() {
             .catch(err => console.log(err));
     };
 
-    function handleFormReply(event, id) {
-        event.preventDefault();
-        API.postSentiment(id,{
-            sentiment: formObject.sentiment,
-            username: formObject.username
-        })
-            .then(res => loadReactions())
-            .catch(err => console.log(err));
-    };
+    // function handleFormReply(event, id) {
+    //     event.preventDefault();
+    //     API.postSentiment(id,{
+    //         sentiment: formObject.sentiment,
+    //         username: formObject.username
+    //     })
+    //         .then(res => loadReactions())
+    //         .catch(err => console.log(err));
+    // };
 
     return (
         <Wrapper>
-            <Appbar />
+            <Appbar>
+                <Link to="/signup">Sign Up</Link>
+                <Link to="/login">Log In</Link>
+                <Link to="/profile">Profile</Link>
+            </Appbar>
             <Jumbotron />
-            <Form>
+            {/* <Form>
                 <Input
                     onChange={handleIputChange}
                     name="username"
@@ -81,7 +85,7 @@ function Home() {
                 >
                     Post
                 </Button>
-            </Form>
+            </Form> */}
 
             {reactions.length ? (
                 <Wrapper>

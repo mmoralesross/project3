@@ -1,11 +1,24 @@
 const db = require("../models");
-const bcrypct = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
-    create: function (req, res) {
+    login: function(req, res) {
+        res.json(req.user);
+        console.log(req.user)
+    },
+    logout: function(req, res) {
+        req.logout();
+        res.redirect("/home");
+    },
+    signup: function (req, res) {
+        const userBody = req.body;
+        userBody.password = bcrypt.hashSync(userBody.password, bcrypt.genSaltSync(10), null);
         db.UserData
-            .create(req.body)
-            .then(dbModel => res.json(dbModel))
+            .create(userBody)
+            .then(dbModel => {
+                console.log(dbModel); 
+                res.json(dbModel) 
+            })
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {

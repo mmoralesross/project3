@@ -5,6 +5,7 @@ const reactionsController = require("../../controllers/reactionsController");
 router.route("/")
     .get(reactionsController.findAll);
 
+//  matches with "/api/reactions"
 router.route("/")
     .post(reactionsController.create);
     

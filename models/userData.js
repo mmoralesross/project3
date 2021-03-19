@@ -25,17 +25,9 @@ const userDataSchema = new Schema({
     ]
 });
 
-// userDataSchema.prototype.validPassword = function (password) {
-//     return bcrypt.compareSync(password, this.password);
-// };
-
-// userDataSchema.addHook("beforeCreate", user => {
-//     user.password = bcrypt.hashSync(
-//         user.password,
-//         bcrypt.genSaltSync(10),
-//         null
-//     );
-// });
+userDataSchema.methods.validPassword = function (password) {
+    return bcrypt.compareSync(password, this.password);
+};
 
 const UserData = mongoose.model("UserData", userDataSchema);
 
