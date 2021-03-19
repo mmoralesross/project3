@@ -51,5 +51,8 @@ export default {
     },
     removeUser: function(id) {
         return axios.delete("/api/users/" + id);
+    },
+    getTrendingStories: function() {
+        return axios.get("https://api.nytimes.com/svc/topstories/v2/world.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab")
     }
 };
