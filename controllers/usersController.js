@@ -6,6 +6,10 @@ module.exports = {
         res.json(req.user);
         console.log(req.user)
     },
+    logout: function(req, res) {
+        req.logout();
+        res.redirect("/home");
+    },
     signup: function (req, res) {
         const userBody = req.body;
         userBody.password = bcrypt.hashSync(userBody.password, bcrypt.genSaltSync(10), null);

@@ -2,8 +2,6 @@ const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 const passport = require("../../config/passport");
 
-// router.use(passport.authenticate("local"))
-
 //  matches with "/api/users"
 router.route("/")
     .get(usersController.findAll);
@@ -21,5 +19,8 @@ router.route("/:id")
     .get(usersController.findById)
     .put(usersController.update)
     .delete(usersController.remove);
+
+router.route("/logout")
+    .get(usersController.logout);
 
 module.exports = router;

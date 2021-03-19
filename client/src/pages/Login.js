@@ -7,9 +7,10 @@ import Wrapper from "../components/Wrapper";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Appbar from "../components/Navbar";
 
 function Login() {
-    // const [users, setUsers] = useState([]);
+    const [users, setUsers] = useState([]);
     const [formObject, setFormObject] = useState({});
 
     function handleIputChange(event) {
@@ -31,6 +32,9 @@ function Login() {
 
     return (
         <Wrapper>
+            <Appbar>
+                <Link to="/home">Home</Link>
+            </Appbar>
             <Jumbotron />
             <Form>
                 <Input
@@ -59,7 +63,6 @@ function Login() {
                     Login
                 </Button>
             </Form>
-            <Link rel="noreferrer" to="/home">Home</Link>
         </Wrapper>
     );
 };

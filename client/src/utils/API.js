@@ -35,7 +35,10 @@ export default {
         return axios.post("/api/users/signup", userData);
     },
     userLogin: function() {
-        return axios.post("/api/users/login")
+        return axios.post("/api/users/login");
+    },
+    userLogout: function() {
+        return axios.get("/logout");
     },
     getUsers: function() {
         return axios.get("/api/users");

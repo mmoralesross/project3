@@ -59,11 +59,13 @@ function Home() {
 
     return (
         <Wrapper>
-            <Appbar />
+            <Appbar>
+                <Link to="/signup">Sign Up</Link>
+                <Link to="/login">Log In</Link>
+                <Link to="/profile">Profile</Link>
+            </Appbar>
             <Jumbotron />
-            <Link rel="noreferrer" to="/signup">Sign Up</Link>
-            <Link rel="noreferrer" to="/login">Login</Link>
-            <Form>
+            {/* <Form>
                 <Input
                     onChange={handleIputChange}
                     name="username"
@@ -83,7 +85,7 @@ function Home() {
                 >
                     Post
                 </Button>
-            </Form>
+            </Form> */}
 
             {reactions.length ? (
                 <Wrapper>

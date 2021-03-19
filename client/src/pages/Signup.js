@@ -7,6 +7,7 @@ import Wrapper from "../components/Wrapper";
 import Form from "../components/Form";
 import Input from "../components/Input";
 import Button from "../components/Button";
+import Appbar from "../components/Navbar";
 
 function Signup() {
     // const [users, setUsers] = useState([]);
@@ -16,7 +17,7 @@ function Signup() {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
     };
-    
+
     function handleFormSubmit(event) {
         event.preventDefault();
         API.createUser({
@@ -30,6 +31,9 @@ function Signup() {
 
     return (
         <Wrapper>
+            <Appbar>
+                <Link to="/home">Home</Link>
+            </Appbar>
             <Jumbotron />
             <Form>
                 <Input
@@ -58,7 +62,6 @@ function Signup() {
                     Signup
                 </Button>
             </Form>
-            <Link rel="noreferrer" to="/home">Home</Link>
         </Wrapper>
     );
 };
