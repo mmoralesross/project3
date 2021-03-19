@@ -9,14 +9,18 @@ passport.use(
             usernameField: "email"
         },
         (email, password, done) => {
-            db.UserData.findOne({email:email})
+            db.UserData.findOne({email: email})
                 .then(dbUser => {
-                    if(!dbUser) {
+                    if (!dbUser) {
                         console.log("Incorrect email");
-                        return done(null, false, {message: "Incorrect email"});
+                        return done(null, false, { 
+                            message: "Incorrect email" 
+                        });
                     } else if (!dbUser.validPassword(password)) {
                         console.log("Incorrect password");
-                        return done(null, false, {message: "Incorrect passord"});
+                        return done(null, false, { 
+                            message: "Incorrect passord" 
+                        });
                     }
                     return done(null, dbUser);
                 });
