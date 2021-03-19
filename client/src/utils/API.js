@@ -51,5 +51,19 @@ export default {
     },
     removeUser: function(id) {
         return axios.delete("/api/users/" + id);
+    },
+    getStocks: function(stock) {
+        return axios.request({
+            method: 'GET',
+            url: 'https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary',
+            params: {symbol: stock, region: 'US'},
+            headers: {
+              'x-rapidapi-key': '698dd4c269msh724d7908fe6467ep1c31ecjsn2ac3b2cb4005',
+              'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com'
+            }
+          })
+    },
+    getMarketStories: function() {
+        return axios.get("https://api.nytimes.com/svc/topstories/v2/business.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab");
     }
 };

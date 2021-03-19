@@ -1,49 +1,51 @@
 import React, { useState, useEffect } from "react";
-import API from "../utils/API";
-import { Link } from "react-router-dom";
+import API from "../../utils/API";
 
-import Jumbotron from "../components/Jumbotron";
-import Appbar from "../components/Navbar/index";
-import Wrapper from "../components/Wrapper";
-import Card from "../components/Card";
+import Wrapper from "../Wrapper";
+import Card from "../Card";
+import Button from "../Button";
+import ReplyModal from "../ReplyModal";
 
-function Profile() {
+function Reactions() {
     const [reactions, setReactions] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     useEffect(() => {
         loadReactions()
     }, []);
 
     function loadReactions() {
-        API.getUser("6053ea60a9e1b63b5c9c4b8c")
+        API.getReactions()
             .then(res => setReactions(res.data))
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
     };
-
-    function signout() {
-        API.userLogout()
-            .then(() => window.location.replace("/home"))
-            .catch(err => console.log(err));
-    }
 
     return (
         <Wrapper>
-            <Appbar>
-                <Link 
-                    onClick={signout}
-                >
-                    Logout
-                </Link>
-            </Appbar>
-            <Jumbotron />
-            {reactions.length !== 0 ? (
+            {reactions.length ? (
                 <Wrapper>
                     {reactions.map(reaction => (
                         <Card key={reaction._id} data-card-id={reaction._id} color="info">
                             <p><strong>{reaction.username}:</strong></p>
                             <hr />
                             <p>{reaction.reaction}</p>
-                            
+                            <ReplyModal
+                                reaction={reaction}
+                                showModal={showModal}
+                                handleClose={handleClose}
+                                username={reaction.username}
+                            />
+                            <Button
+                                color="success btn-sm"
+                                onClick={handleShow}
+                                data-btn-id={reaction._id}
+                                name={reaction.username}
+                            >
+                                Reply
+                                </Button>
                             {reaction.sentiments ? (
                                 <div>
                                     {reaction.sentiments.map(sentiment => (
@@ -64,4 +66,4 @@ function Profile() {
     );
 };
 
-export default Profile;
+export default Reactions;

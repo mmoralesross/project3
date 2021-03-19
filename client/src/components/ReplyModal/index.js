@@ -2,7 +2,6 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Input from "../Input";
-// import React, { useState, useEffect } from "react";
 
 function ReplyModal(props) {
 
