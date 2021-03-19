@@ -63,7 +63,7 @@ export default {
             }
           })
     },
-    getMarketStories: function() {
-        return axios.get("https://api.nytimes.com/svc/topstories/v2/business.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab");
+    getTrendingStories: function() {
+        return axios.get("https://api.nytimes.com/svc/topstories/v2/world.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab")
     }
 };
