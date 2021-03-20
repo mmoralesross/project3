@@ -14,7 +14,7 @@ function Reactions() {
     const handleShow = () => setShowModal(true);
 
     useEffect(() => {
-        loadReactions()
+        loadReactions();
     }, []);
 
     function loadReactions() {

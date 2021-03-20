@@ -7,7 +7,7 @@ import Form from "../Form";
 import Input from "../Input";
 
 function Postreactions() {
-    // const [reactions, setReactions] = useState([]);
+    const [reactions, setReactions] = useState([]);
     const [formObject, setFormObject] = useState({});
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function Postreactions() {
 
     function loadReactions() {
         API.getReactions()
-            .then(res => {return})
+            .then(res => setReactions(res.data))
             .catch(err => console.log(err))
     };
 
@@ -31,7 +31,7 @@ function Postreactions() {
             reaction: formObject.reaction,
             username: formObject.username
         })
-            .then(res => loadReactions())
+            .then(res => setReactions(res))
             .catch(err => console.log(err));
     };
 

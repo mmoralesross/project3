@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
 const passport = require("../../config/passport");
+const isAuthenticated = require("../../config/middleware/isAuthenticated");
 
 //  matches with "/api/users"
 router.route("/")

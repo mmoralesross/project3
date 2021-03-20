@@ -9,10 +9,10 @@ function Stockdata() {
 
     useEffect(() => {
         loadStockData();
-    }, []);
+    }, [stockData]);
 
     function loadStockData() {
-        API.getStocks("aapl")
+        API.getStocks("gm")
             .then(res => setStockData(res.data.price))
             .catch(err => console.log(err));
     };
