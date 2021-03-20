@@ -31,7 +31,7 @@ function Comments() {
         event.preventDefault();
         API.postReaction({
             reaction: formObject.reaction,
-            username: formObject.username
+            email: formObject.email
         })
             .then(res => setComments(res))
             .catch(err => console.log(err));
@@ -57,9 +57,9 @@ function Comments() {
             <Form>
                 <Input
                     onChange={handleInputChange}
-                    name="username"
-                    id="username"
-                    placeholder="Username"
+                    name="email"
+                    id="email"
+                    placeholder="email"
                 />
                 <Input
                     onChange={handleInputChange}
@@ -69,7 +69,7 @@ function Comments() {
                 />
                 <Button
                     color="info"
-                    disabled={!(formObject.username && formObject.reaction)}
+                    disabled={!(formObject.email && formObject.reaction)}
                     onClick={handleFormSubmit}
                 >
                     Post

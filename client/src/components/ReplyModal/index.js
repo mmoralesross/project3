@@ -10,7 +10,7 @@ function ReplyModal(props) {
         <Modal show={props.showModal} onHide={props.handleClose}>
         <Modal.Dialog>
             <Modal.Header closeButton>
-                <h2>Replying to {props.username}</h2>
+                <h2>Replying to {props.email}</h2>
             </Modal.Header>
 
             <Modal.Body>

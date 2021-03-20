@@ -38,7 +38,7 @@ export default {
         return axios.post("/api/users/login");
     },
     userLogout: function() {
-        return axios.get("/logout");
+        return axios.get("/api/users/logout");
     },
     getUsers: function() {
         return axios.get("/api/users");
@@ -64,7 +64,7 @@ export default {
           })
     },
     getTrendingStories: function() {
-        return axios.get("https://api.nytimes.com/svc/topstories/v2/world.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab")
+        return axios.get("https://api.nytimes.com/svc/topstories/v2/business.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab")
     },
     // getStockChart: function() {
     //     return axios.get("")

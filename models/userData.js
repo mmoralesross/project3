@@ -6,12 +6,7 @@ const userDataSchema = new Schema({
     email: {
         type: String,
         required: true,
-        // unique: true
-    },
-    username: {
-        type: String,
-        required: true,
-        // unique: true
+        unique: true
     },
     password: {
         type: String,

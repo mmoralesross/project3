@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 
 import Jumbotron from "../components/Jumbotron";
 import Wrapper from "../components/Wrapper";
-import Form from "../components/Form";
-import Input from "../components/Input";
-import Button from "../components/Button";
-import Appbar from "../components/Navbar";
 
 function Login() {
     const [formObject, setFormObject] = useState({});
@@ -21,46 +17,50 @@ function Login() {
         event.preventDefault();
         API.userLogin({
             email: formObject.email,
-            password: formObject.password,
-            username: formObject.username
+            password: formObject.password
         })
-            .then(() => window.location.replace("/profile"))
+            .then(() => window.location.replace("/home"))
             .catch(err => console.log(err));
     };
 
     return (
         <Wrapper>
-            <Appbar>
-                <Link to="/home">Home</Link>
-            </Appbar>
+            
             <Jumbotron />
-            <Form>
-                <Input
-                    onChange={handleIputChange}
-                    name="email"
-                    id="email"
-                    placeholder="email"
-                />
-                <Input
-                    onChange={handleIputChange}
-                    name="password"
-                    id="password"
-                    placeholder="password"
-                />
-                <Input
-                    onChange={handleIputChange}
-                    name="username"
-                    id="username"
-                    placeholder="username"
-                />
-                <Button
-                    color="success"
-                    disabled={!(formObject.username && formObject.password && formObject.email)}
+            
+            <form className="px-4 py-3">
+                <div className="form-group">
+                    <label name="email">Email address</label>
+                    <input 
+                        onChange={handleIputChange}
+                        name="email"
+                        id="email" 
+                        type="email" 
+                        className="form-control" 
+                        placeholder="email@example.com"
+                    />
+                </div>
+                <div className="form-group">
+                    <label name="password">Password</label>
+                    <input 
+                        onChange={handleIputChange}
+                        name="password"
+                        id="password" 
+                        type="password" 
+                        className="form-control" 
+                        placeholder="Password" 
+                    />
+                </div>
+                <button 
+                    disabled={!(formObject.email && formObject.password)}
                     onClick={handleFormSubmit}
-                >
-                    Login
-                </Button>
-            </Form>
+                    type="submit" 
+                    className="btn btn-success"
+                >Log in
+                </button>
+            </form>
+            <div className="dropdown-divider"></div>
+            <Link to="/signup" className="dropdown-item">New around here? Sign up</Link>
         </Wrapper>
     );
 };

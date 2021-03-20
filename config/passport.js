@@ -9,7 +9,7 @@ passport.use(
             usernameField: "email"
         },
         (email, password, done) => {
-            db.UserData.findOne({email: email})
+            db.UserData.findOne({ email: email })
                 .then(dbUser => {
                     if (!dbUser) {
                         console.log("Incorrect email");

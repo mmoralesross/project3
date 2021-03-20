@@ -9,10 +9,24 @@ import Card from "../components/Card";
 
 function Profile() {
     const [reactions, setReactions] = useState([]);
+    // const [currentUser, setCurrentUser] = useState({ email: "" });
 
     useEffect(() => {
+        // activeUser();
         loadReactions();
     }, []);
+
+    // function activeUser() {
+    //     API.userLogin()
+    //         .then(res => setCurrentUser(res.email))
+    //         .catch(err => console.log(err));
+    // };
+
+    function handleLogOut() {
+        API.userLogout()
+            .then(() => window.location.replace("/login"))
+            .catch(err => console.log(err));
+    };
 
     function loadReactions() {
         API.getUser("6054663061870724d4e99c3e")
@@ -20,17 +34,11 @@ function Profile() {
             .catch (err => console.log(err));
     };
 
-    function signout() {
-        API.userLogout()
-            .then(() => window.location.replace("/home"))
-            .catch(err => console.log(err));
-    }
-
     return (
         <Wrapper>
             <Appbar>
                 <Link to="/home">Home</Link>
-                <Link onClick={signout}>Logout</Link>
+                <Link style={{float:"right"}} onClick={handleLogOut}>Log Out</Link>
             </Appbar>
 
             <Postreactions />
@@ -40,7 +48,7 @@ function Profile() {
                     <Wrapper>
                         {reactions.map(reaction => (
                             <Card key={reaction._id} data-card-id={reaction._id} color="info">
-                                <p><strong>{reaction.username}:</strong></p>
+                                <p><strong>{reaction.email}:</strong></p>
                                 <hr />
                                 <p>{reaction.reaction}</p>
 
@@ -48,7 +56,7 @@ function Profile() {
                                     <div>
                                         {reaction.sentiments.map(sentiment => (
                                             <Card key={sentiment._id} id={sentiment._id} color="danger">
-                                                <p><strong>{sentiment.username} says:</strong> {sentiment.sentiment}</p>
+                                                <p><strong>{sentiment.email} says:</strong> {sentiment.sentiment}</p>
                                                 <hr />
                                             </Card>
                                         ))}
