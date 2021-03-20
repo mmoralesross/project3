@@ -9,7 +9,7 @@ function Marketstories() {
 
     useEffect(() => {
         loadStories();
-    }, [stories]);
+    }, []);
 
     function loadStories() {
         API.getTrendingStories()

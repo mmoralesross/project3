@@ -33,11 +33,12 @@ function Reactions() {
         setFormObject({ ...formObject, [name]: value })
     };
 
-    function handleFormSubmit(event) {
+    function handleFormSubmit(id, event) {
         event.preventDefault();
-        API.postSentiment({
+        console.log(currentUser);
+        API.postSentiment(id, {
             sentiment: formObject.sentiment,
-            email: currentUser
+            email: "prolsu88@gmail.com"
         })
             .then(res => console.log(res))
             .catch(err => console.group(err));
@@ -68,7 +69,7 @@ function Reactions() {
                             <Button
                                 color="success btn-sm"
                                 disabled={!(formObject.sentiment)}
-                                onClick={handleFormSubmit}
+                                onClick={event => handleFormSubmit(reaction._id, event)}
                             >
                                 Reply
                                 </Button>
