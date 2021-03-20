@@ -30,7 +30,7 @@ function Profile() {
         <Wrapper>
             <Appbar>
                 <Link to="/home">Home</Link>
-                <Link onClick={signout}>Logout</Link>
+                <a href="/logout" rel="noreferrer">Logout</a>
             </Appbar>
 
             <Postreactions />

@@ -3,22 +3,24 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
     login: function(req, res) {
-        res.json(req.user);
+        res.json(true);
         console.log(req.user)
     },
     logout: function(req, res) {
         req.logout();
         res.redirect("/home");
     },
+    home: function(req, res) {
+        if (req.user) {
+            res.redirect("/home")
+        }
+    },
     signup: function (req, res) {
         const userBody = req.body;
         userBody.password = bcrypt.hashSync(userBody.password, bcrypt.genSaltSync(10), null);
         db.UserData
             .create(userBody)
-            .then(dbModel => {
-                console.log(dbModel); 
-                res.json(dbModel) 
-            })
+            .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
