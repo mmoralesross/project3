@@ -3,8 +3,8 @@ import "./style.css";
 
 function Rowcontainer(props) {
     return(
-        <div className="container horizontal">
-            <div className="row text-center">
+        <div className="container-fluid">
+            <div className="row overflow-auto">
                 {props.children}
             </div>
         </div>

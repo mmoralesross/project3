@@ -10,7 +10,6 @@ import Button from "../components/Button";
 import Appbar from "../components/Navbar";
 
 function Login() {
-    const [users, setUsers] = useState([]);
     const [formObject, setFormObject] = useState({});
 
     function handleIputChange(event) {
@@ -25,8 +24,7 @@ function Login() {
             password: formObject.password,
             username: formObject.username
         })
-            // .then(() => window.location.replace("/home"))
-            .then(res => console.log(res))
+            .then(() => window.location.replace("/profile"))
             .catch(err => console.log(err));
     };
 
