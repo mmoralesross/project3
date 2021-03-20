@@ -5,18 +5,20 @@ import Wrapper from "../Wrapper";
 import Button from "../Button";
 import Form from "../Form";
 import Input from "../Input";
+import Comments from "../Comments";
 
-function Postreactions() {
-    const [reactions, setReactions] = useState([]);
-    const [formObject, setFormObject] = useState({});
+
+function Comments() {
+    const [Comments, setComments] = useState([]);
+    // const [formObject, setFormObject] = useState({});
 
     useEffect(() => {
-        loadReactions();
+        loadComments();
     }, []);
 
-    function loadReactions() {
-        API.getReactions()
-            .then(res => setReactions(res.data))
+    function loadComments() {
+        API.getComments()
+            .then(res => setComments(res.data))
             .catch(err => console.log(err))
     };
 
@@ -31,7 +33,7 @@ function Postreactions() {
             reaction: formObject.reaction,
             username: formObject.username
         })
-            .then(res => setReactions(res))
+            .then(res => setComments(res))
             .catch(err => console.log(err));
     };
 
@@ -77,4 +79,4 @@ function Postreactions() {
     );
 };
 
-export default Postreactions;
+export default Comments;

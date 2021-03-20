@@ -65,5 +65,8 @@ export default {
     },
     getTrendingStories: function() {
         return axios.get("https://api.nytimes.com/svc/topstories/v2/world.json?api-key=2MlxruKUsf94PqwoSGi3oOM3YvCl1Gab")
-    }
+    },
+    // getStockChart: function() {
+    //     return axios.get("")
+    // }
 };
