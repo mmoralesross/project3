@@ -30,9 +30,9 @@ function Marketstories() {
                     <div className="carousel-inner">
                         {stories.map(story => (
                             <div className="carousel-item" data-img-id={story.uri}>
-                                <img src={story.multimedia[0].url} className="d-block w-100" alt={stories[0].multimedia[0].caption} />
+                                <img src={story.multimedia[1].url} className="d-block w-100" alt={stories[0].multimedia[0].caption} />
                                 <div className="carousel-caption d-none d-md-block">
-                                    <h5>{story.multimedia[0].caption}</h5>
+                                    <h5>{story.multimedia[1].caption}</h5>
                                 </div>
                             </div>
                         ))}

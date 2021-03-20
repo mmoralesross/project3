@@ -7,17 +7,17 @@ import Form from "../Form";
 import Input from "../Input";
 
 function Postreactions() {
-    const [reactions, setReactions] = useState([]);
+    const [currentUser, setCurrentUser] = useState({ email: "" });
     const [formObject, setFormObject] = useState({});
 
     useEffect(() => {
-        loadReactions();
+        activeUser();
     }, []);
 
-    function loadReactions() {
-        API.getReactions()
-            .then(res => setReactions(res.data))
-            .catch(err => console.log(err))
+    function activeUser() {
+        API.userLogin()
+            .then(res => setCurrentUser(res.email))
+            .catch(err => console.log(err));
     };
 
     function handleInputChange(event) {
@@ -29,36 +29,21 @@ function Postreactions() {
         event.preventDefault();
         API.postReaction({
             reaction: formObject.reaction,
-            username: formObject.username
+            email: currentUser
         })
-            .then(res => setReactions(res))
+            .then(res => console.log(res))
             .catch(err => console.log(err));
     };
-
-    // const Comments = React.createClass({
-    //     renderComment(comment, i) {
-    //         console.log(comment);
-    //     },
-    //     render() {
-
-    //         return(
-    //             <div className="comment">
-    //                 {this.props.postComments.map(this.renderComment)}
-
-    //             </div>
-    //         )
-    //     }
-    // })
 
     return (
         <Wrapper>
             <Form>
-                <Input
+                {/* <Input
                     onChange={handleInputChange}
-                    name="username"
-                    id="username"
-                    placeholder="Username"
-                />
+                    name="email"
+                    id="email"
+                    placeholder="email"
+                /> */}
                 <Input
                     onChange={handleInputChange}
                     name="reaction"
@@ -67,7 +52,7 @@ function Postreactions() {
                 />
                 <Button
                     color="info"
-                    disabled={!(formObject.username && formObject.reaction)}
+                    disabled={!(formObject.reaction)}
                     onClick={handleFormSubmit}
                 >
                     Post

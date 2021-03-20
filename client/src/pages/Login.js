@@ -30,7 +30,7 @@ function Login() {
             
             <form className="px-4 py-3">
                 <div className="form-group">
-                    <label for="email">Email address</label>
+                    <label name="email">Email address</label>
                     <input 
                         onChange={handleIputChange}
                         name="email"
@@ -41,7 +41,7 @@ function Login() {
                     />
                 </div>
                 <div className="form-group">
-                    <label for="password">Password</label>
+                    <label name="password">Password</label>
                     <input 
                         onChange={handleIputChange}
                         name="password"
@@ -55,7 +55,7 @@ function Login() {
                     disabled={!(formObject.email && formObject.password)}
                     onClick={handleFormSubmit}
                     type="submit" 
-                    className="btn btn-primary"
+                    className="btn btn-success"
                 >Log in
                 </button>
             </form>

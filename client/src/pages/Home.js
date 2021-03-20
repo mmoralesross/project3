@@ -8,7 +8,7 @@ import Reactions from "../components/Reactions";
 import Marketstories from "../components/Marketstories";
 
 function Home() {
-    
+
     function handleLogOut() {
         API.userLogout()
             .then(() => window.location.replace("/login"))
@@ -19,11 +19,11 @@ function Home() {
         <Wrapper>
             <Appbar>
                 <Link to="/profile">Profile</Link>
-                <Link style={{float:"right"}} onClick={handleLogOut}>Log Out</Link>
+                <Link style={{ float: "right" }} onClick={handleLogOut}>Log Out</Link>
             </Appbar>
-
-            {/* <Stockdata /> */}
-            <Marketstories />
+            <Wrapper>
+                <Marketstories />
+            </Wrapper>
             <Reactions />
 
         </Wrapper>

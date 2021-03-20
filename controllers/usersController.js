@@ -3,8 +3,8 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
     login: function(req, res) {
-        res.json(true);
-        console.log(req.user)
+        res.json(req.body);
+        // console.log(req.user);
     },
     logout: function(req, res) {
         req.logout();

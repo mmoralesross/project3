@@ -13,7 +13,7 @@ module.exports = {
         } else {
             db.UserReaction
                 .create(req.body)
-                .then(({ _id }) => db.UserData.findOneAndUpdate({ username:req.body.username }, { $push: { reactions: _id }}, { new:true }))
+                .then(({ _id }) => db.UserData.findOneAndUpdate({ email:req.body.email }, { $push: { reactions: _id }}, { new:true }))
                 .then(dbModel => res.json(dbModel))
                 .catch(err => res.status(422).json(err));
         };
