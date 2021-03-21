@@ -10,6 +10,7 @@ import Marketstories from "../components/Marketstories";
 function Home() {
 
     function handleLogOut() {
+        localStorage.removeItem("marketReactUser@");
         API.userLogout()
             .then(() => window.location.replace("/login"))
             .catch(err => console.log(err));

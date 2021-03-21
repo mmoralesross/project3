@@ -11,6 +11,9 @@ router.route("/")
 // matches with "/api/users/login"
 router.route("/login", passport.authenticate("local"))
     .post(usersController.login);
+
+router.route("/user_data/:_id")
+    .get(usersController.session);
     
 // matches with "/api/users/login"
 router.route("/signup")
@@ -20,7 +23,7 @@ router.route("/logout")
     .get(usersController.logout);
 
 //  matches with "/api/users/:id"
-router.route("/:id")
+router.route("/:_id")
     .get(usersController.findById)
     .put(usersController.update)
     .delete(usersController.remove);

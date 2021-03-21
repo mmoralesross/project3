@@ -20,7 +20,7 @@ export default {
         return axios.get("/api/sentiments");
     },
     getSentiment: function(id) {
-        return axios.get("/api/sentments/" + id);
+        return axios.get("/api/sentiments/" + id);
     },
     postSentiment: function(id, postBody) {
         return axios.post("/api/sentiments/" + id, postBody);
@@ -34,8 +34,11 @@ export default {
     createUser: function(userData) {
         return axios.post("/api/users/signup", userData);
     },
-    userLogin: function() {
-        return axios.post("/api/users/login");
+    userLogin: function(userData) {
+        return axios.post("/api/users/login", userData);
+    },
+    connectedUser: function(userID) {
+        return axios.get("/api/users/user_data/" + userID);
     },
     userLogout: function() {
         return axios.get("/api/users/logout");

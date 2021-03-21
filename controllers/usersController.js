@@ -3,17 +3,25 @@ const bcrypt = require("bcryptjs");
 
 module.exports = {
     login: function(req, res) {
-        res.json(req.body);
-        // console.log(req.user);
+        db.UserData.findOne({ email:req.body.email })
+            .then(dbModel => {
+                res.json(dbModel);
+                console.log(dbModel);
+            })
+            .catch(err => res.status(422).json(err));
+    },
+    session: function(req, res) {
+        const { _id } = req.params;
+        db.UserData.findById(_id)
+            .then(dbModel => {
+                res.json(dbModel);
+                console.log(dbModel);
+            })
+            .catch(err => res.status(422).json(err));
     },
     logout: function(req, res) {
         req.logout();
         res.redirect("/home");
-    },
-    home: function(req, res) {
-        if (req.user) {
-            res.redirect("/home")
-        }
     },
     signup: function (req, res) {
         const userBody = req.body;
@@ -44,8 +52,9 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
+        const { _id } = req.params;
         db.UserData
-            .find({ _id: req.params.id })
+            .findById(_id)
             .populate("reactions")
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));

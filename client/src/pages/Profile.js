@@ -9,27 +9,30 @@ import Card from "../components/Card";
 
 function Profile() {
     const [reactions, setReactions] = useState([]);
-    // const [currentUser, setCurrentUser] = useState({ email: "" });
+    const [currentUser, setCurrentUser] = useState({});
 
     useEffect(() => {
-        // activeUser();
+        activeUser();
         loadReactions();
     }, []);
 
-    // function activeUser() {
-    //     API.userLogin()
-    //         .then(res => setCurrentUser(res.email))
-    //         .catch(err => console.log(err));
-    // };
+    function activeUser() {
+        const userID = localStorage.getItem("marketReactUser@")
+        API.connectedUser(userID)
+            .then(res => setCurrentUser(res.data))
+            .catch(err => console.log(err));
+    };
 
     function handleLogOut() {
+        localStorage.removeItem("marketReactUser@");
         API.userLogout()
             .then(() => window.location.replace("/login"))
             .catch(err => console.log(err));
     };
 
     function loadReactions() {
-        API.getUser("6054663061870724d4e99c3e")
+        console.log(currentUser)
+        API.getUser(currentUser._id)
             .then(res => setReactions(res.data))
             .catch (err => console.log(err));
     };

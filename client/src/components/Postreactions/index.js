@@ -7,7 +7,7 @@ import Form from "../Form";
 import Input from "../Input";
 
 function Postreactions() {
-    const [currentUser, setCurrentUser] = useState({ email: "" });
+    const [currentUser, setCurrentUser] = useState({});
     const [formObject, setFormObject] = useState({});
 
     useEffect(() => {
@@ -15,8 +15,9 @@ function Postreactions() {
     }, []);
 
     function activeUser() {
-        API.userLogin()
-            .then(res => setCurrentUser(res.email))
+        const userID = localStorage.getItem("marketReactUser@")
+        API.connectedUser(userID)
+            .then(res => setCurrentUser(res.data))
             .catch(err => console.log(err));
     };
 
@@ -29,7 +30,7 @@ function Postreactions() {
         event.preventDefault();
         API.postReaction({
             reaction: formObject.reaction,
-            email: currentUser
+            email: currentUser.email
         })
             .then(res => console.log(res))
             .catch(err => console.log(err));

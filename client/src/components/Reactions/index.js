@@ -4,18 +4,12 @@ import API from "../../utils/API";
 import Wrapper from "../Wrapper";
 import Card from "../Card";
 import Button from "../Button";
-// import ReplyModal from "../ReplyModal";
 import Input from "../Input";
 
 function Reactions() {
-    const [currentUser, setCurrentUser] = useState({ email: "" });
+    const [currentUser, setCurrentUser] = useState({});
     const [reactions, setReactions] = useState([]);
     const [formObject, setFormObject] = useState({});
-
-    // const [showModal, setShowModal] = useState(false);
-
-    // const handleClose = () => setShowModal(false);
-    // const handleShow = () => setShowModal(true);
 
     useEffect(() => {
         activeUser();
@@ -23,11 +17,18 @@ function Reactions() {
     }, []);
 
     function activeUser() {
-        API.userLogin()
-            .then(res => setCurrentUser(res.email))
+        const userID = localStorage.getItem("marketReactUser@")
+        API.connectedUser(userID)
+            .then(res => setCurrentUser(res.data))
             .catch(err => console.log(err));
     };
 
+    function loadReactions() {
+        API.getReactions()
+            .then(res => setReactions(res.data))
+            .catch(err => console.log(err))
+    };
+    
     function handleInputChange(event) {
         const { name, value } = event.target;
         setFormObject({ ...formObject, [name]: value })
@@ -35,19 +36,12 @@ function Reactions() {
 
     function handleFormSubmit(id, event) {
         event.preventDefault();
-        console.log(currentUser);
         API.postSentiment(id, {
             sentiment: formObject.sentiment,
-            email: "prolsu88@gmail.com"
+            email: currentUser.email
         })
             .then(res => console.log(res))
             .catch(err => console.group(err));
-    };
-
-    function loadReactions() {
-        API.getReactions()
-            .then(res => setReactions(res.data))
-            .catch(err => console.log(err))
     };
 
     return (
